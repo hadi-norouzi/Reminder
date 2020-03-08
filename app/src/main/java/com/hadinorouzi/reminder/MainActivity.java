@@ -3,6 +3,7 @@ package com.hadinorouzi.reminder;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class MainActivity extends AppCompatActivity {
 
     FloatingActionButton FAB;
+    MainFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         FAB = findViewById(R.id.floatingAB);
+        fragment = new MainFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(getTaskId(),fragment).commit();
     }
 
     public void FABClicked(View view){
