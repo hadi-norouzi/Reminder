@@ -12,12 +12,12 @@ public class AddNewReminder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_reminder);
-        Toolbar toolbar = findViewById(R.id.toolbarAddActivity);
-        toolbar.setTitle("add Reminder");
-
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        Toolbar toolbar = findViewById(R.id.);
+//        toolbar.setTitle("add Reminder");
+//
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
     }
 }
