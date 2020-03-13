@@ -3,15 +3,15 @@ package com.hadinorouzi.reminder;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -20,10 +20,12 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static int ADD_REMINDER_REQUEST_CODE = 10;
+
     FloatingActionButton FAB;
     private RecyclerView recyclerView;
     private AlarmAdapter alarmAdapter;
-    private ArrayList<AlarmInfo> alarmInfoArrayList;
+    private ArrayList<AlarmData> alarmInfoArrayList;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -39,23 +41,28 @@ public class MainActivity extends AppCompatActivity {
         alarmInfoArrayList = new ArrayList<>();
         alarmAdapter = new AlarmAdapter(this,alarmInfoArrayList);
         recyclerView.setAdapter(alarmAdapter);
-        createListData(); // for add dummy data
     }
 
     public void FABClicked(View view){
         Intent intent = new Intent(this,AddNewReminder.class);
-        startActivity(intent);
+        startActivityForResult(intent,ADD_REMINDER_REQUEST_CODE);
     }
 
     @Override
     public void setSupportActionBar(@Nullable Toolbar toolbar) {
         super.setSupportActionBar(toolbar);
     }
-    private void createListData(){
-        alarmInfoArrayList.add(new AlarmInfo("emer","nothing",new Date(),false));
-        alarmInfoArrayList.add(new AlarmInfo("emer","nothing",new Date(),false));
-        alarmInfoArrayList.add(new AlarmInfo("emer","nothing",new Date(),false));
-        alarmInfoArrayList.add(new AlarmInfo("emer","nothing",new Date(),false));
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == ADD_REMINDER_REQUEST_CODE){
+            if(resultCode == Activity.RESULT_OK){
+                AlarmData alarmInfo = new AlarmData(data.getStringExtra("title"),data.getStringExtra("description"),new Date(),false);
+                Log.d("red",String.valueOf(alarmInfo.getTitle()));
+                alarmInfoArrayList.add(alarmInfo);
+            }
+        }
     }
 }

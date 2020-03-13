@@ -16,7 +16,7 @@ public class AlarmHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public void setDetails(AlarmInfo alarmInfo){
+    public void setDetails(AlarmData alarmInfo){
 
         title.setText(alarmInfo.getTitle());
         description.setText(alarmInfo.getDescription());

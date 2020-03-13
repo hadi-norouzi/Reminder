@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class AlarmAdapter extends RecyclerView.Adapter<AlarmHolder> {
 
     private Context context;
-    private ArrayList<AlarmInfo> alarms;
+    private ArrayList<AlarmData> alarms;
 
-    public AlarmAdapter(Context context, ArrayList<AlarmInfo> alarms) {
+    public AlarmAdapter(Context context, ArrayList<AlarmData> alarms) {
         this.context = context;
         this.alarms = alarms;
     }
@@ -29,7 +29,7 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull AlarmHolder holder, int position) {
-        AlarmInfo alarmInfo = alarms.get(position);
+        AlarmData alarmInfo = alarms.get(position);
         holder.setDetails(alarmInfo);
 
     }

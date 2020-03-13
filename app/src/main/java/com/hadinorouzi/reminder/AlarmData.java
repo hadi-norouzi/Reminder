@@ -2,14 +2,14 @@ package com.hadinorouzi.reminder;
 
 import java.util.Date;
 
-public class AlarmInfo {
+public class AlarmData {
 
     private String title;
     private String description;
     private Date date;
     private boolean completed;
 
-    public AlarmInfo(String title, String description, Date date, boolean completed) {
+    public AlarmData(String title, String description, Date date, boolean completed) {
         this.title = title;
         this.description = description;
         this.date = date;
