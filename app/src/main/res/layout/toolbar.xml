@@ -5,5 +5,5 @@
     android:layout_height="wrap_content"
     android:id="@+id/toolbar"
     android:background="@android:color/darker_gray"
-    android:elevation="30dp">
+    >
 </androidx.appcompat.widget.Toolbar>
